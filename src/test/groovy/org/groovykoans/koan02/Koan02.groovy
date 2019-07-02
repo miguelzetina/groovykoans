@@ -20,7 +20,8 @@ class Koan02 extends GroovyTestCase {
         def predicate2 = true
 
         // ------------ START EDITING HERE ----------------------
-
+        predicate1 = true
+        predicate2 = false
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -34,7 +35,8 @@ class Koan02 extends GroovyTestCase {
         List<String> list = ['item']
 
         // ------------ START EDITING HERE ----------------------
-
+        map['any_key'] = 'Any value'
+        list.clear()
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -48,7 +50,8 @@ class Koan02 extends GroovyTestCase {
         String s2 = ''
 
         // ------------ START EDITING HERE ----------------------
-
+        s2 = s1
+        s1 = ''
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -65,7 +68,11 @@ class Koan02 extends GroovyTestCase {
 
         // Remove (or change) the offending integer to continue
         // ------------ START EDITING HERE ----------------------
-
+        for (int i : balance ) {
+            if (!i) {
+                balance.removeElement(i)
+            }
+        }
 
         // ------------ STOP EDITING HERE  ----------------------
 
