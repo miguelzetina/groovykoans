@@ -89,6 +89,10 @@ class Koan06 extends GroovyTestCase {
         def primesBetween200And250 = []
         // ------------ START EDITING HERE ----------------------
 
+        (200..250).each {
+            if ((2..<it).every { divisor -> it % divisor != 0})
+                primesBetween200And250 << it
+        }
 
         // ------------ STOP EDITING HERE  ----------------------
         assert primesBetween200And250 == [211, 223, 227, 229, 233, 239, 241]
