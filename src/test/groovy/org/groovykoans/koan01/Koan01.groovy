@@ -33,8 +33,8 @@ class Koan01 extends GroovyTestCase {
 
         // Assign our variables the required values to continue...
         // ------------ START EDITING HERE ----------------------
-
-
+        assertion = true
+        hello = "Hello"
         // ------------ STOP EDITING HERE  ----------------------
 
         assert assertion, 'Assign "true" to the "assertion" variable to proceed'
@@ -55,7 +55,8 @@ class Koan01 extends GroovyTestCase {
         // Create the target string with the ${} mechanism. Remember that ${} can contain method calls too!
         String result
         // ------------ START EDITING HERE ----------------------
-
+        result = "The size of the string '${greeting}' is ${greeting.length()}"
+        // can be http://docs.groovy-lang.org/latest/html/groovy-jdk/java/lang/CharSequence.html#size()
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -71,10 +72,17 @@ class Koan01 extends GroovyTestCase {
         def result
         // ------------ START EDITING HERE ----------------------
 
+        result = map['right'] + map['left']
+
+        // or can be
+        def result_option = map.inject([]) { final_value, entry ->
+            final_value << entry.value
+        }.join('')
 
         // ------------ STOP EDITING HERE  ----------------------
 
         assert result.toCharArray().size() == 16
+        assert result_option.toCharArray().size() == 16
     }
 
     void test04_Lists() {
@@ -92,7 +100,7 @@ class Koan01 extends GroovyTestCase {
         // Add the missing item to the Groovy list. Pay attention to the order of the items.
         // Hint: you can use either Java's add(int, String) or Groovy's plus() method.
         // ------------ START EDITING HERE ----------------------
-
+        groovyList = groovyList.plus(1, 'Queen')
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -134,7 +142,7 @@ class Koan01 extends GroovyTestCase {
     private String createMessageForUser(UserService userService) {
         def message
         // ------------ START EDITING HERE ----------------------
-
+        message = "Hello ${userService.loggedInUser?.firstName ?: 'Anonymous'}!"
 
         // ------------ STOP EDITING HERE  ----------------------
 
