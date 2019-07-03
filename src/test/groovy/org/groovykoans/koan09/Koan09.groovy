@@ -76,6 +76,7 @@ class Koan09 extends GroovyTestCase {
         def expectedThisClassName
         // ------------ START EDITING HERE ----------------------
 
+        expectedThisClassName = 'org.groovykoans.koan09.Koan09'
 
         // ------------ STOP EDITING HERE  ----------------------
         assert this.class.name == expectedThisClassName
@@ -105,6 +106,8 @@ class Koan09 extends GroovyTestCase {
         def expectedWeightOnMoon, expectedWeightOnEarth
         // ------------ START EDITING HERE ----------------------
 
+        expectedWeightOnMoon = 1.655
+        expectedWeightOnEarth = 10
 
         // ------------ STOP EDITING HERE  ----------------------
         assert weightOnEarth == expectedWeightOnEarth
@@ -115,6 +118,7 @@ class Koan09 extends GroovyTestCase {
         // Create a fake environment using the technique in the link to create a gravity of 6
         // ------------ START EDITING HERE ----------------------
 
+        calculateWeight.delegate = [gravity: 6]
 
         // ------------ STOP EDITING HERE  ----------------------
         def weightOnFakePlanet = calculateWeight(10)
