@@ -32,6 +32,10 @@ class Koan09 extends GroovyTestCase {
         def expando = new Expando()
         // ------------ START EDITING HERE ----------------------
 
+        expando.firstName = "Mike"
+        expando.sayHello = { ->
+            "Hello from ${firstName}"
+        }
 
         // ------------ STOP EDITING HERE  ----------------------
 
@@ -49,6 +53,8 @@ class Koan09 extends GroovyTestCase {
         def proxy
         // ------------ START EDITING HERE ----------------------
 
+        proxy = ProxyMetaClass.getInstance(SensitiveService)
+        proxy.interceptor = new NukeInterceptor()
 
         // ------------ STOP EDITING HERE  ----------------------
 
