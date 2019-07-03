@@ -35,6 +35,8 @@ class Koan10 extends GroovyTestCase {
         def movieCount
         // ------------ START EDITING HERE ----------------------
 
+        def xmlMovieCatalog = new XmlSlurper().parse('src/test/groovy/org/groovykoans/koan10/movies.xml')
+        movieCount = xmlMovieCatalog.movie.size()
 
         // ------------ STOP EDITING HERE  ----------------------
         assert movieCount == 7
@@ -44,6 +46,12 @@ class Koan10 extends GroovyTestCase {
         List<String> moviesWithThe = []
         // ------------ START EDITING HERE ----------------------
 
+        def filteredMoviesWithTheInTitle = xmlMovieCatalog.movie.title.findAll {
+            it.text().toLowerCase().contains('the')
+        }
+
+        // get text for every groovy.util.slurpersupport.NodeChild object in groovy.util.slurpersupport.FilteredNodeChildren
+        moviesWithThe = filteredMoviesWithTheInTitle.collect() { it.text() }
 
         // ------------ STOP EDITING HERE  ----------------------
         assert moviesWithThe.containsAll(['Conan the Barbarian', 'The Expendables', 'The Terminator'])
@@ -52,6 +60,7 @@ class Koan10 extends GroovyTestCase {
         def movieIdsGreaterThan5
         // ------------ START EDITING HERE ----------------------
 
+        movieIdsGreaterThan5 = xmlMovieCatalog.movie.findAll { it.@id.text().toInteger() > 5 }.size()
 
         // ------------ STOP EDITING HERE  ----------------------
         assert movieIdsGreaterThan5 == 2
