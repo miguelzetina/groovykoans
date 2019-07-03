@@ -173,6 +173,15 @@ class Koan09 extends GroovyTestCase {
 
         // ------------ START EDITING HERE ----------------------
 
+        Integer.metaClass.fizzBuzz = {
+            def result = ''
+
+            if (delegate % 3 == 0) result += 'Fizz'
+            if (delegate % 5 == 0) result += 'Buzz'
+            if (!result) result = delegate.toString()
+
+            result
+        }
 
         // ------------ STOP EDITING HERE  ----------------------
         def fizzBuzzes = (1..15).collect { it.fizzBuzz() }
